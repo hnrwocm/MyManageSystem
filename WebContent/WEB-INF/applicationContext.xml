@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	     xmlns:aop="http://www.springframework.org/schema/aop"
+	     xmlns:tx="http://www.springframework.org/schema/tx"
+	     xmlns:context="http://www.springframework.org/schema/context"
+	     xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+				           http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+				           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+				           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+    
+    <bean id="studentAction" class="com.ssh.action.StudentAction">
+   		<property name="studentService" ref="studentService"></property>
+    </bean>
+    
+    <!-- 配置service -->
+   <bean id="studentService" class="com.ssh.service.impl.StudentServiceImpl">
+   	   	 <property name="studentDao" ref="studentDao"></property>
+   </bean>
+   <bean id="gradeService" class="com.ssh.service.impl.GradeServiceImpl">
+   	   	 <property name="gradeDao" ref="gradeDao"></property>
+   </bean>
+   
+    <!-- 配置dao -->
+   <bean id="studentDao" class="com.ssh.dao.impl.StudentDaoImpl">
+   		<property name="hibernateTemplate" ref="hibernateTemplate"></property>
+   </bean>
+   <bean id="gradeDao" class="com.ssh.dao.impl.GradeDaoImpl">
+   		<property name="hibernateTemplate" ref="hibernateTemplate"></property>
+   </bean>
+   
+    <!-- 配置hibernateTemplate -->
+   <bean id="hibernateTemplate" class="org.springframework.orm.hibernate5.HibernateTemplate">
+   		<property name="sessionFactory" ref="sessionFactory"></property>
+   </bean>
+   
+     <!-- 配置sessionFactory -->
+     <!-- 用spring提供的一个SessionFactory:LocalSessionFactoryBean
+     	创建SessionFactory有三部分必不可少的信息.三部分信息在hibernate主配置文件中有 
+     	把hibernate主配置文件的位置注入进来
+     -->
+   <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+   		<property name="configLocation" value="classpath:hibernate.cfg.xml"></property>
+   </bean>
+   
+   <!-- 配置事务管理器 -->
+   <bean id="transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+   		<property name="sessionFactory" ref="sessionFactory"></property>
+   </bean>
+   
+   <!-- 配置事务的通知 -->
+   <tx:advice id="txAdvice" transaction-manager="transactionManager">
+   		<tx:attributes>
+  			<tx:method name="*" propagation="REQUIRED" read-only="false"/> 	
+  			<tx:method name="find*" propagation="SUPPORTS" read-only="true"/> 	
+   		</tx:attributes>
+   </tx:advice>
+   
+   <!-- 配置AOP -->
+   <aop:config>
+   		<aop:pointcut expression="execution(* com.ssh.service.impl.*.*(..))" id="pt1"/>
+   		<aop:advisor advice-ref="txAdvice" pointcut-ref="pt1"/>
+   </aop:config>
+   
+
+   
+   
+   
+   
+   
+   
+   
+</beans>

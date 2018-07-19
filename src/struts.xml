@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+
+	<constant name="struts.devMode" value="true"></constant>
+	
+	<package name="default" extends="struts-default" namespace="/" strict-method-invocation="false">
+		<!-- 学生 -->	
+		<action name="student_*" method="{1}" class="com.ssh.action.StudentAction">
+			<result name="findAll">/jsp/student/listStudent.jsp</result>
+			 <result name="findByName">/jsp/student/listStudent.jsp</result>
+			<result name="addStudent">/jsp/student/addStudent.jsp</result>
+			<result name="deleteStudent" type="redirect">/student_findAll.action</result>
+			<result name="saveStudent" type="redirect">/student_findAll.action</result>
+			<result name="editStudent">/jsp/student/editStudent.jsp</result>
+			<result name="updateStudent" type="redirect">/student_findAll.action</result>
+		</action>
+		<!-- 班级 -->		
+		<action name="grade_*" method="{1}" class="com.ssh.action.GradeAction">
+			<result name="findAll">/jsp/grade/listGrade.jsp</result>
+			 <result name="findByName">/jsp/grade/listGrade.jsp</result>
+			<result name="addGrade">/jsp/grade/addGrade.jsp</result>
+			<result name="deleteGrade" type="redirect">/grade_findAll.action</result>
+			<result name="saveGrade" type="redirect">/grade_findAll.action</result>
+			<result name="editGrade">/jsp/grade/editGrade.jsp</result>
+			<result name="updateGrade" type="redirect">/grade_findAll.action</result>
+		</action>	
+				
+	</package>
+</struts>
