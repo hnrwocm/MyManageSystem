@@ -11,5 +11,11 @@
     		<property name="gName" column="g_name"></property>
     		<property name="gHead" column="g_head"></property>
     		<property name="gDesc" column="g_desc"></property>
+    		
+	    	<set name="students" table="t_student" cascade="save-update">
+				<key column="stu_gra_id">
+				</key>
+				<one-to-many class="Student"/>
+			</set>
     	</class>
     </hibernate-mapping>

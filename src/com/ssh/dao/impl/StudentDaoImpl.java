@@ -19,6 +19,8 @@ public class StudentDaoImpl implements IStudentDao {
 	@Override
 	//保存学生
 	public void save(Student student) {
+
+		//保存学生
 		hibernateTemplate.save(student);		
 	}
 	
@@ -70,6 +72,11 @@ public class StudentDaoImpl implements IStudentDao {
 		DetachedCriteria criteria = DetachedCriteria.forClass(Student.class);
 		List<Student> list = (List<Student>) hibernateTemplate.findByCriteria(criteria,begin,pageSize);
 		return list;
+	}
+
+	@Override
+	public List<Student> findByGrade(Integer gid) {
+		return  (List<Student>) hibernateTemplate.find("from Student s left outer join fetch  s.grade where s.grade.gId = ?", Long.valueOf(gid));
 	}
 
 

@@ -9,19 +9,20 @@
 		<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/mymanagesystem</property>
 		<property name="hibernate.connection.username">root</property>
 		<property name="hibernate.connection.password">826826</property>
-		<property name="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</property>
+		<property name="hibernate.dialect">org.hibernate.dialect.MySQL5InnoDBDialect</property>
 		
 		
 		<property name="hibernate.show_sql">true</property>
 		<property name="hibernate.fromat_sql">true</property>
 		<property name="hibernate.hbm2ddl.auto">update</property>
 		<property name="hibernate.connection.provider_class">org.hibernate.connection.C3P0ConnectionProvider</property>
-		<property name="hibernate.current_session_context_class">org.springframework.orm.hibernate5.SpringSessionContext</property>  
+		<property name="hibernate.current_session_context_class">org.springframework.orm.hibernate5.SpringSessionContext</property>
 		
-	<!-- 	<property name="hibernate.current_session_context_class">thread</property> -->
+	<!-- 	<property name="hibernate.current_session_context_class">thread</property>   -->
 		
 		
 		<mapping resource="com/ssh/dmain/Student.hbm.xml"></mapping>
 		<mapping resource="com/ssh/dmain/Grade.hbm.xml"></mapping>
+		<mapping resource="com/ssh/dmain/Login.hbm.xml"></mapping>
 	</session-factory>
 </hibernate-configuration>

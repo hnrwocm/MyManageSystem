@@ -36,8 +36,7 @@
 	<s:form id="saveForm" action="grade_updateGrade.action" method="post" namespace="/" theme="simple">
 		<table style="font-size:16px" class="table">
 			<s:iterator value="list" var="g">
-				<td align="right">班级编号：</td>
-				<td><s:textfield name="gId" /></td>
+				<s:hidden name="gId"></s:hidden>
 				<tr>
 					<td align="right">班级名字：</td>
 					<td><s:textfield name="gName" /></td>

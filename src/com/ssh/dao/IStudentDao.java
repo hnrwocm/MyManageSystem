@@ -21,5 +21,7 @@ public interface IStudentDao {
 	int findCount();
 
 	List<Student> findByPage(int begin, int pageSize);
+
+	List<Student> findByGrade(Integer gid);
 	
 }

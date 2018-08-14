@@ -9,7 +9,10 @@
 				           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
 				           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
     
-
+    <bean id="studentAction" class="com.ssh.action.StudentAction">
+   		<property name="studentService" ref="studentService"></property>
+   		<property name="gradeService" ref="gradeService"></property>
+    </bean>
 
     
     <!-- 配置service -->

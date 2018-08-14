@@ -82,6 +82,7 @@
 					<td><s:property value="#s.sGrade" /></td>
 					<td><s:property value="#s.sPhone" /></td>
 					<td><s:property value="#s.sAddress" /></td>
+					
 
 					<td>
 					    <a href="student_editStudent.action?sId=<s:property value="#s.sId"/>">
@@ -98,6 +99,12 @@
 		</tbody>
 	</table>
 	<br/>
+	<!--  	<form>   
+     <input type="text"  id = "userName" placeholder="Ajax的验证" style="border-radius: 5%;">
+     <input type="button" class="form-control"  value="提交评论" id="commentSubmit">
+ 	</form> -->
+
+	
 		<table border="0" cellspacing="0" cellpadding="0" width="900px">
 		<tr>
 			<td align="right">
@@ -123,5 +130,36 @@
 		</tr>
 	</table>
 	</div>
+	
+	<script type="text/javascript">
+			$('#commentSubmit').click(function() {
+		        var userName = $('#userName').val();
+
+		        //alert(articleID);
+		        if (userName == "") {
+		            alert("昵称不能为空");
+		                return false;
+		        }
+		
+		    $.ajax({ 
+		        type : "post",
+		        url : "${pageContext.request.contextPath}/student_ajaxTest",
+		        data : {
+		            userName : userName,
+		        },
+		        dataType:"json",
+		
+		        success : function(data) {
+                    alert(data);
+                    $('#userName').val("");
+                    location.reload();
+		        },
+		
+		        error : function() {
+		            alert("评论失败");
+		        }
+		    });
+		});
+	</script>
 </body>
 </html>

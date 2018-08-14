@@ -9,6 +9,7 @@ import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import org.junit.Test;
 
+
 import com.ssh.dmain.Student;
 import com.ssh.service.IStudentService;
 import com.ssh.service.impl.StudentServiceImpl;
@@ -60,6 +61,28 @@ public class HibernateTest {
 //		System.out.println(s3==s4);
 		
 		
+	}
+	@Test
+	public void test5() {
+		Student s = new Student();
+		s.setsName("测试");
+
+		//1.解析主配置文件
+		Configuration cfg = new Configuration();
+		cfg.configure();
+		//2.根据配置文件创建SessionFactory
+		SessionFactory factory = cfg.buildSessionFactory();
+		//3.根据SessionFactory创建Session
+		Session session =factory.openSession();
+		//4.开启事务
+		Transaction tx = session.beginTransaction();
+		//5.执行操作(保存)
+		session.save(s);
+		//6.提交事务
+		tx.commit();
+		//7.释放资源
+		session.close();
+		factory.close();
 	}
 
 }

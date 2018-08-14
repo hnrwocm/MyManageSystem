@@ -2,6 +2,7 @@ package com.ssh.dmain;
 
 import java.io.Serializable;
 import java.util.Date;
+
 /**
  * 学生的实体类
  * @author OCM
@@ -25,6 +26,14 @@ public class Student implements Serializable {
 	//学生家庭地址
 	private String sAddress;
 	
+	private Grade grade;
+	
+	public Grade getGrade() {
+		return grade;
+	}
+	public void setGrade(Grade grade) {
+		this.grade = grade;
+	}
 	public Long getsId() {
 		return sId;
 	}

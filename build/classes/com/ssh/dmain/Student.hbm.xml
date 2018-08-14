@@ -15,5 +15,7 @@
 		<property name="sGrade" column="s_grade"></property>
 		<property name="sPhone" column="s_phone"></property>
 		<property name="sAddress" column="s_address"></property>
+		
+		<many-to-one name="grade" class="Grade" column="stu_gra_id" lazy="false"></many-to-one>
 	</class>
 </hibernate-mapping>

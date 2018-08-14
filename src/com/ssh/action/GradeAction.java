@@ -13,11 +13,13 @@ import com.ssh.dmain.Grade;
 import com.ssh.dmain.PageBean;
 import com.ssh.dmain.Student;
 import com.ssh.service.IGradeService;
+import com.ssh.service.IStudentService;
 
 
 public class GradeAction extends ActionSupport implements ModelDriven<Grade>{
 	//业务层注入
 	private IGradeService gradeService;
+	private IStudentService studentService;
 	//模型驱动
 	private Grade grade = new Grade();
 	
@@ -49,6 +51,11 @@ public class GradeAction extends ActionSupport implements ModelDriven<Grade>{
 	public void setGradeService(IGradeService gradeService) {
 		this.gradeService = gradeService;
 	}
+	
+	public void setStudentService(IStudentService studentService) {
+		this.studentService = studentService;
+	}
+
 	//查询所有班级,并把查询到的结果集添加到值栈中
 	public String findAll() {
 		PageBean<Grade> pageBean = gradeService.findByPage(currPage);
@@ -90,6 +97,15 @@ public class GradeAction extends ActionSupport implements ModelDriven<Grade>{
 		gradeService.update(grade);
 		return "updateGrade";
 		
+	}
+	public String findByGrade() {
+		List<Student> list = studentService.findByGrade(grade.getgId().intValue());
+		for (Student student : list) {
+			System.out.println(student);
+		}
+		System.out.println("GradeAction中的findByGrade方法执行了");
+		ActionContext.getContext().getValueStack().set("list", list);
+		return "findByGrade";
 	}
 
 	

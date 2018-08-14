@@ -57,6 +57,7 @@
 				<th>班级名字</th>
 				<th>班主任</th>
 				<th>班级说明</th>
+				<th>查询所有学生</th>
 				<th>编辑</th>
 				<th>删除</th>
 			</tr>
@@ -67,7 +68,11 @@
 					<td><s:property value="#g.gName" /></td>
 					<td><s:property value="#g.gHead" /></td>
 					<td><s:property value="#g.gDesc" /></td>
-
+					<td>
+					    <a href="grade_findByGrade.action?gId=<s:property value="#g.gId"/>">
+					       <span class="glyphicon glyphicon-pencil"></span>
+					    </a>
+					</td>
 					<td>
 					    <a href="grade_editGrade.action?gId=<s:property value="#g.gId"/>">
 					       <span class="glyphicon glyphicon-pencil"></span>
@@ -83,6 +88,75 @@
 		</tbody>
 	</table>
 	<br/>
+	
+	
+	<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+	开始演示模态框
+</button>
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" 
+						aria-hidden="true">×
+				</button>
+				<h4 class="modal-title" id="myModalLabel">
+					学生列表
+				</h4>
+			</div>
+			<div class="modal-body">
+				<table class="table table-hover table-bordered">
+					<thead>
+						<tr>
+							<th>学生学号</th>
+							<th>学生姓名</th>
+							<th>性别</th>
+							<th>出生日期</th>
+							<th>所在班级</th>
+							<th>手机号码</th>
+							<th>家庭地址</th>
+							<th>编辑</th>
+							<th>删除</th>
+						</tr>
+					</thead>
+		<tbody>
+			<s:iterator value="list" var="s">
+				<tr>
+					<td><s:property value="#s.sNo" /></td>
+					<td><s:property value="#s.sName" /></td>
+					<td><s:property value="#s.sSex" /></td>
+					<td><s:date format="yyyy-MM-dd" name="#s.sBirthday" /></td>
+					<td><s:property value="#s.sGrade" /></td>
+					<td><s:property value="#s.sPhone" /></td>
+					<td><s:property value="#s.sAddress" /></td>
+
+					<td>
+					    <a href="student_editStudent.action?sId=<s:property value="#s.sId"/>">
+					       <span class="glyphicon glyphicon-pencil"></span>
+					    </a>
+					</td>
+					<td>
+					    <a href="student_deleteStudent.action?sId=<s:property value="#s.sId"/>">
+					       <span class="glyphicon glyphicon-remove"></span>
+					    </a>
+					</td>
+				</tr>
+			</s:iterator>
+		</tbody>
+	</table>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" 
+						data-dismiss="modal">关闭
+				</button>
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+
 		<table border="0" cellspacing="0" cellpadding="0" width="900px">
 		<tr>
 			<td align="right">

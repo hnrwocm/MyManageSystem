@@ -20,4 +20,6 @@ public interface IStudentService {
 	Student findByName(String sname);
 	
 	PageBean<Student> findByPage(Integer currPage);
+
+	List<Student> findByGrade(Integer gid);
 }

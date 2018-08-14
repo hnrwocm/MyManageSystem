@@ -28,49 +28,49 @@ public class PageBean<T> {
    private List<T> list;
 
 
-public int getCurrPage() {
-	return currPage;
-}
-public void setCurrPage(int currPage) {
-	this.currPage = currPage;
-}
-public int getPageSize() {
-	return pageSize;
-}
-public void setPageSize(int pageSize) {
-	this.pageSize = pageSize;
-}
-public int getTotalPage() {
-	return totalPage;
-}
-public void setTotalPage(int totalPage) {
-	this.totalPage = totalPage;
-}
-public int getTotalCount() {
-	return totalCount;
-}
-public void setTotalCount(int totalCount) {
-	this.totalCount = totalCount;
-}
-
-
-public int getSkipPage() {
-	return skipPage;
-}
-public void setSkipPage(int skipPage) {
-	this.skipPage = skipPage;
-}
-public List<T> getList() {
-	return list;
-}
-public void setList(List<T> list) {
-	this.list = list;
-}
-@Override
-public String toString() {
-	return "PageBean [currPage=" + currPage + ", pageSize=" + pageSize + ", totalPage=" + totalPage + ", totalCount="
-			+ totalCount + ", skipPage=" + skipPage + ", list=" + list + "]";
-}
-
-   
-}
+	public int getCurrPage() {
+		return currPage;
+	}
+	public void setCurrPage(int currPage) {
+		this.currPage = currPage;
+	}
+	public int getPageSize() {
+		return pageSize;
+	}
+	public void setPageSize(int pageSize) {
+		this.pageSize = pageSize;
+	}
+	public int getTotalPage() {
+		return totalPage;
+	}
+	public void setTotalPage(int totalPage) {
+		this.totalPage = totalPage;
+	}
+	public int getTotalCount() {
+		return totalCount;
+	}
+	public void setTotalCount(int totalCount) {
+		this.totalCount = totalCount;
+	}
+	
+	
+	public int getSkipPage() {
+		return skipPage;
+	}
+	public void setSkipPage(int skipPage) {
+		this.skipPage = skipPage;
+	}
+	public List<T> getList() {
+		return list;
+	}
+	public void setList(List<T> list) {
+		this.list = list;
+	}
+	@Override
+	public String toString() {
+		return "PageBean [currPage=" + currPage + ", pageSize=" + pageSize + ", totalPage=" + totalPage + ", totalCount="
+				+ totalCount + ", skipPage=" + skipPage + ", list=" + list + "]";
+	}
+	
+	   
+	}

@@ -6,7 +6,7 @@
 
 	<constant name="struts.devMode" value="true"></constant>
 	
-	<package name="default" extends="struts-default" namespace="/" strict-method-invocation="false">
+	<package name="default" extends="json-default" namespace="/" strict-method-invocation="false">
 		<!-- 学生 -->	
 		<action name="student_*" method="{1}" class="com.ssh.action.StudentAction">
 			<result name="findAll">/jsp/student/listStudent.jsp</result>
@@ -16,17 +16,28 @@
 			<result name="saveStudent" type="redirect">/student_findAll.action</result>
 			<result name="editStudent">/jsp/student/editStudent.jsp</result>
 			<result name="updateStudent" type="redirect">/student_findAll.action</result>
+			<result name="success" type="json">
+				<param name="root">userName</param>
+            </result>
+          
 		</action>
 		<!-- 班级 -->		
 		<action name="grade_*" method="{1}" class="com.ssh.action.GradeAction">
 			<result name="findAll">/jsp/grade/listGrade.jsp</result>
-			 <result name="findByName">/jsp/grade/listGrade.jsp</result>
+			<result name="findByName">/jsp/grade/listGrade.jsp</result>
 			<result name="addGrade">/jsp/grade/addGrade.jsp</result>
 			<result name="deleteGrade" type="redirect">/grade_findAll.action</result>
 			<result name="saveGrade" type="redirect">/grade_findAll.action</result>
 			<result name="editGrade">/jsp/grade/editGrade.jsp</result>
+			<result name="findByGrade">/jsp/grade/GradeStudent.jsp</result>
 			<result name="updateGrade" type="redirect">/grade_findAll.action</result>
 		</action>	
-				
+		<action name="login" method="login" class="com.ssh.action.LoginAction">
+			  <result name="success" type="redirect">/student_findAll.action</result>
+			  <result name="failure">/failure.jsp</result>
+		</action>
+		<action name="register" method="register" class="com.ssh.action.LoginAction">
+			<result name="success">/index.jsp</result>
+		</action>		
 	</package>
 </struts>

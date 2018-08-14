@@ -35,9 +35,8 @@
 	<!-- action对应一个action标签，id对应提交时的对应关系 -->
 	<s:form id="saveForm" action="student_updateStudent.action" method="post" namespace="/" theme="simple">
 		<table style="font-size:16px" class="table">
-			<s:iterator value="list" var="s">
-			<td align="right">学生编号：</td>
-			<td><s:textfield name="sId" /></td>
+			<s:iterator value="list">
+			<s:hidden name="sId"></s:hidden>
 			<tr>
 				<td align="right">学生姓名：</td>
 				<td><s:textfield name="sName" /></td>
@@ -48,20 +47,28 @@
 				<td align="right">出生日期：</td>
 				<td><s:textfield name="sBirthday"/></td>
 				
-				<td align="right">所属班级：</td>
-				<td><s:textfield name="sGrade" /></td>
+				<td align="right">家庭地址：</td>
+				<td><s:textfield name="sAddress"/></td>
 			</tr>
 
 			<tr>
 				<td align="right">学号：</td>
-				<td><s:textfield  name="sNo" value="%{sNo}"/></td>
+				<td><s:textfield  name="sNo"/></td>
 				<td align="right">手机号码：</td>
-				<td><s:textfield name="sPhone" value="%{sPhone}" /></td>
-				<td align="right">家庭地址：</td>
-				<td><s:textfield name="sAddress"/></td>
+				<td><s:textfield name="sPhone" /></td>
 				
+				<td align="right">所属班级：</td>
+				<td><s:select list="l" name="sGrade"></s:select></td>
 			</tr>
 			</s:iterator>
+			
+			
+	
+		
+				
+
+
+			
 		</table>
 	</s:form>
 	</div>

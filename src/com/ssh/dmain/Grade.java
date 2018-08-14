@@ -1,6 +1,10 @@
 package com.ssh.dmain;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
+
+
 
 /**
  * 班级的实体类
@@ -17,6 +21,15 @@ public class Grade implements Serializable{
 	//班级说明
 	private String  gDesc;
 	
+	private Set<Student> students = new HashSet<Student>(0);
+	
+
+	public Set<Student> getStudents() {
+		return students;
+	}
+	public void setStudents(Set<Student> students) {
+		this.students = students;
+	}
 	public Long getgId() {
 		return gId;
 	}

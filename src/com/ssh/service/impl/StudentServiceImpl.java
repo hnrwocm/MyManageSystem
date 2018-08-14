@@ -85,5 +85,11 @@ public class StudentServiceImpl implements IStudentService {
 			return pageBean;
 	}
 
+	@Override
+	public List<Student> findByGrade(Integer gid) {
+		List<Student> students =  studentDao.findByGrade(gid);
+		return students;						
+	}
+
 
 }
